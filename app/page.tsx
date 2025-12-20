@@ -90,6 +90,12 @@ export default function HomePage() {
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
+  const navLinks = [
+    { name: "Features", href: "#features" },
+    { name: "How it Works", href: "#how-it-works" },
+    { name: "Demo", href: "/demo/techcorp/careers" },
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       {/* Animated background */}
@@ -106,7 +112,7 @@ export default function HomePage() {
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Link href="/" className="flex items-center gap-2.5 group">
             <div className="relative flex h-12 w-12 items-center justify-center rounded-full transition-transform group-hover:scale-105">
-            <Image
+              <Image
                 src="/logo.png"
                 alt="Logo"
                 width={100}
@@ -117,33 +123,24 @@ export default function HomePage() {
             </div>
             <div className="flex flex-col gap-0">
               <h1 className="text-xl font-semibold tracking-tight ">
-              Whitecarrot
+                Whitecarrot
               </h1>
               <h3 className="text-sm text-muted-foreground font-semibold tracking-tight">
-              Build your future
-            </h3>
+                Build your future
+              </h3>
             </div>
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex">
-            <Link
-              href="#features"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Features
-            </Link>
-            <Link
-              href="#how-it-works"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              How it Works
-            </Link>
-            <Link
-              href="/demo/techcorp/careers"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Demo
-            </Link>
+            {navLinks.map((link, index) => (
+              <Link
+                key={index}
+                href={link.href}
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {link.name}
+              </Link>
+            ))}
           </nav>
 
           <div className="flex items-center gap-3">
@@ -152,7 +149,7 @@ export default function HomePage() {
               asChild
               variant="ghost"
               size="sm"
-              className="hidden sm:inline-flex"
+              className="hidden sm:inline-flex hover:text-white"
             >
               <Link href="/auth/login">Sign in</Link>
             </Button>
@@ -527,46 +524,37 @@ export default function HomePage() {
       <footer className="border-t border-border/50">
         <div className="container mx-auto px-4 py-12">
           <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="relative flex h-12 w-12 items-center justify-center rounded-full transition-transform group-hover:scale-105">
-            <Image
-                src="/logo.png"
-                alt="Logo"
-                width={100}
-                height={100}
-                className="h-12 w-12 rounded-full"
-              />
-              <div className="absolute inset-0 h-full w-full" />
-            </div>
-            <div className="flex flex-col gap-0">
-              <h1 className="text-xl font-semibold tracking-tight ">
-              Whitecarrot
-              </h1>
-              <h3 className="text-sm text-muted-foreground font-semibold tracking-tight">
-              Build your future
-            </h3>
-            </div>
-          </Link>
+            <Link href="/" className="flex items-center gap-2.5 group">
+              <div className="relative flex h-12 w-12 items-center justify-center rounded-full transition-transform group-hover:scale-105">
+                <Image
+                  src="/logo.png"
+                  alt="Logo"
+                  width={100}
+                  height={100}
+                  className="h-12 w-12 rounded-full"
+                />
+                <div className="absolute inset-0 h-full w-full" />
+              </div>
+              <div className="flex flex-col gap-0">
+                <h1 className="text-xl font-semibold tracking-tight ">
+                  Whitecarrot
+                </h1>
+                <h3 className="text-sm text-muted-foreground font-semibold tracking-tight">
+                  Build your future
+                </h3>
+              </div>
+            </Link>
 
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
-              <Link
-                href="#features"
-                className="transition-colors hover:text-foreground"
-              >
-                Features
-              </Link>
-              <Link
-                href="#how-it-works"
-                className="transition-colors hover:text-foreground"
-              >
-                How it Works
-              </Link>
-              <Link
-                href="/demo/techcorp/careers"
-                className="transition-colors hover:text-foreground"
-              >
-                Demo
-              </Link>
+              {navLinks.map((link, index) => (
+                <Link
+                  href={link.href}
+                  key={index}
+                  className="transition-colors hover:text-foreground"
+                >
+                  {link.name}
+                </Link>
+              ))}
             </div>
 
             <p className="text-sm text-muted-foreground">
